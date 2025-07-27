@@ -17,14 +17,14 @@ interface SidebarProps {
 }
 
 const sidebarItems = [
-  { icon: LayoutDashboard, label: "Dashboard", active: true },
-  { icon: ShoppingCart, label: "Sales", active: false },
-  { icon: Package, label: "Orders", active: false },
-  { icon: Boxes, label: "Products", active: false },
-  { icon: Boxes, label: "Inventory", active: false },
-  { icon: Users, label: "Customers", active: false },
-  { icon: Megaphone, label: "Marketing", active: false },
-  { icon: BarChart3, label: "Reports", active: false },
+  { icon: LayoutDashboard, label: "Dashboard", href: "/" },
+  { icon: ShoppingCart, label: "Sales", href: "/sales" },
+  { icon: Package, label: "Orders", href: "/orders" },
+  { icon: Boxes, label: "Products", href: "/products" },
+  { icon: Boxes, label: "Inventory", href: "/inventory" },
+  { icon: Users, label: "Customers", href: "/customers" },
+  { icon: Megaphone, label: "Marketing", href: "/marketing" },
+  { icon: BarChart3, label: "Reports", href: "/reports" },
 ];
 
 const settingsItems = [
@@ -52,10 +52,10 @@ export function DashboardSidebar({ className }: SidebarProps) {
           {sidebarItems.map((item, index) => (
             <li key={index}>
               <a
-                href="#"
+                href={item.href}
                 className={cn(
                   "flex items-center space-x-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
-                  item.active
+                  window.location.pathname === item.href
                     ? "bg-primary text-primary-foreground"
                     : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                 )}
